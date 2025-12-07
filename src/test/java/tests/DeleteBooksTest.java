@@ -1,20 +1,15 @@
 package tests;
 
-import extension.AuthData;
+import api.BookApi;
+
 import extension.WithLogin;
 import io.qameta.allure.Description;
-import models.AddBooksRequest;
-import models.Isbn;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.DeleteAllBooksModal;
 import pages.ProfilePage;
 
-import java.util.Collections;
-
-import static io.restassured.RestAssured.given;
-import static specs.Specs.requestSpecAuth;
-import static specs.Specs.responseSpec;
 
 @WithLogin
 public class DeleteBooksTest extends BaseTest{
@@ -27,26 +22,8 @@ public class DeleteBooksTest extends BaseTest{
     @DisplayName("Удалить книги")
     void deleteBooksSuccessTest() {
 
-        given()
-                .spec(requestSpecAuth(AuthData.token))
-                .delete("/BookStore/v1/Books?UserId=" + AuthData.userId)
-                .then()
-                .statusCode(204);
-
-        AddBooksRequest body = new AddBooksRequest();
-        body.setUserId(AuthData.userId);
-
-        Isbn isbn = new Isbn();
-        isbn.setIsbn("9781491904244");
-
-        body.setCollectionOfIsbns(Collections.singletonList(isbn));
-
-        given(requestSpecAuth(AuthData.token))
-                .body(body)
-                .when()
-                .post("/BookStore/v1/Books")
-                .then()
-                .spec(responseSpec(201));
+        BookApi.deleteAllBooks();
+        BookApi.addBook("9781491904244");
 
         profilePage.openPage()
                 .checkUrl()
