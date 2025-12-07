@@ -50,7 +50,8 @@ public class ProfilePage {
 
     @Step("Проверить, что нет книг в спиcке")
     public ProfilePage checkEmptyBooksList(){
-       $(".rt-noData").shouldHave(text("No rows found"));
+      // $(".rt-noData").shouldHave(text("No rows found"));
+        $$(".rt-tbody .rt-tr-group").shouldHave(size(0));
         return this;
     }
 
