@@ -29,6 +29,9 @@ public class LoginExtension implements BeforeEachCallback {
                         .spec(responseSpec(200))
                         .extract().as(LoginResponse.class);
 
+        AuthData.userId = loginResponse.getUserId();
+        AuthData.token = loginResponse.getToken();
+
         open("/login");
 
         WebDriverRunner.getWebDriver().manage().addCookie(new Cookie("userID", loginResponse.getUserId()));
