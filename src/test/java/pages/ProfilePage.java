@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -13,6 +14,7 @@ public class ProfilePage {
     public final SelenideElement userNameLabel = $(".col-md-5 > #userName-label");
     public final SelenideElement booksLink = $(".mr-2 > a");
     public final SelenideElement deleteBooks = $(".di > #submit");
+    private ElementsCollection bookRows = $$(".rt-tbody .rt-tr-group");
 
 
     @Step("Открыть страницу профайла")
@@ -50,8 +52,7 @@ public class ProfilePage {
 
     @Step("Проверить, что нет книг в спиcке")
     public ProfilePage checkEmptyBooksList(){
-      // $(".rt-noData").shouldHave(text("No rows found"));
-        $$(".rt-tbody .rt-tr-group").shouldHave(size(0));
+        bookRows.shouldHave(size(0));
         return this;
     }
 
