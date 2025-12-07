@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'io.qameta.allure' version '2.11.2'
+    id 'io.freefair.lombok' version "9.1.0"
 }
 
 group = 'qa.demo'

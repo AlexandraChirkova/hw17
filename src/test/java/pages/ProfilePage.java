@@ -4,13 +4,14 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class ProfilePage {
     public final SelenideElement titleUserName = $("#userName-value");
 
-    @Step("Открыть страницу логина")
+    @Step("Открыть страницу профайла")
     public ProfilePage openPage() {
         open("/profile");
         return this;
@@ -24,7 +25,7 @@ public class ProfilePage {
 
     @Step("Проверить User Name")
     public ProfilePage checkUserNameAfterLogin(String userName){
-        titleUserName.shouldHave(text(userName));
+        titleUserName.shouldBe(visible).shouldHave(text(userName));
         return this;
 
     }
