@@ -14,7 +14,7 @@ public class DeleteAllBooksModal {
     public final SelenideElement okDeleteButton = $("#closeSmallModal-ok");
 
     @Step("Удалить книгу")
-    public void deleteBook(){
+    public void deleteBook() {
         deleteBookTitle.shouldHave(text("Delete All Books"));
         okDeleteButton.shouldBe(visible).click();
         refresh();

@@ -12,7 +12,7 @@ import pages.ProfilePage;
 
 
 @WithLogin
-public class DeleteBooksTest extends BaseTest{
+public class DeleteBooksTest extends BaseTest {
 
     ProfilePage profilePage = new ProfilePage();
     DeleteAllBooksModal deleteAllBooksModal = new DeleteAllBooksModal();

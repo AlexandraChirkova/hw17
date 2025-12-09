@@ -26,32 +26,32 @@ public class ProfilePage {
     }
 
     @Step("Проверить урл страницы")
-    public ProfilePage checkUrl(){
+    public ProfilePage checkUrl() {
         webdriver().shouldHave(urlContaining("profile"));
         return this;
     }
 
     @Step("Проверить User Name")
-    public ProfilePage checkUserNameAfterLogin(String userName){
+    public ProfilePage checkUserNameAfterLogin(String userName) {
         titleUserName.shouldBe(visible).shouldHave(text(userName));
         return this;
 
     }
 
     @Step("Проверить наличие книгм")
-    public ProfilePage checkBookAvailable(){
+    public ProfilePage checkBookAvailable() {
         booksLink.shouldBe(visible).shouldHave(text("You Don't Know JS"));
         return this;
     }
 
     @Step("Удалить книгу")
-    public ProfilePage deleteBookClick(){
+    public ProfilePage deleteBookClick() {
         deleteBooks.shouldBe(visible).click();
         return this;
     }
 
     @Step("Проверить, что нет книг в спиcке")
-    public ProfilePage checkEmptyBooksList(){
+    public ProfilePage checkEmptyBooksList() {
         bookRows.shouldHave(size(0));
         return this;
     }

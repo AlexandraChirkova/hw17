@@ -11,10 +11,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Map;
 
 public class BaseTest {
+
     @BeforeAll
-    static void setupConfig(){
+    static void setupConfig() {
         Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl="https://demoqa.com";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.reopenBrowserOnFail = true;
         Configuration.browser = System.getProperty("browser", "chrome");
@@ -46,6 +47,5 @@ public class BaseTest {
         Attach.browserConsoleLogs();
         Attach.addVideo();
     }
-
 
 }
